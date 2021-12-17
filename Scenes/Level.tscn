@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Obstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 50 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 512, 550 )
+shape = SubResource( 1 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 204, 120 )
+
+[node name="Obstacle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1008, 468 )
