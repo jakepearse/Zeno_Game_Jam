@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-export var jumpKey = KEY_A #The button that causes this instance to jump
+var jumpKey = null #The button that causes this instance to jump
+var floorNode:Node
 export var jumpImpulse:Vector2 #Jumping "bumps" the char by this vector.
-var floorNode:Node #The node of the floor. Value assigned by Level node.
 var inAir = true #Tracks whether the player is not on the ground.
 
 func _ready():
@@ -15,13 +15,22 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
+		print(event.scancode)
 		if event.scancode == jumpKey and !inAir: #Compare the event to the jumpKey var
+			print('yop')
 			apply_central_impulse(jumpImpulse)
 			inAir = true
 
 
 func _on_hit(body):
 	if body != floorNode:
-		print("Game over!") #Replace with game over sequence
+		print(body)
+		self.MODE_RIGID
+		yield(get_tree().create_timer(3.0), "timeout")
+		get_tree().change_scene("res://UI/GameOver.tscn")
 	else:
-		inAir = false #The character is now on the ground
+		inAir = false 	 #The character is now on the ground
+		
+
+func _set_jump_key(scancode):
+	jumpKey = scancode

@@ -1,7 +1,5 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Obstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
@@ -39,14 +37,19 @@ shape = SubResource( 1 )
 [node name="ScrollingTexture" parent="Floor" instance=ExtResource( 4 )]
 material = SubResource( 3 )
 
-[node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 204, 120 )
-
-[node name="Obstacle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1008, 468 )
-
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 spd = 20
 
 [node name="ParallaxBackground2" parent="." instance=ExtResource( 6 )]
 spd = 50
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="PlayerTimer" type="Timer" parent="."]
+wait_time = 4.404
+autostart = true
+
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
+[connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
