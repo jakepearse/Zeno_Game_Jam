@@ -8,23 +8,16 @@ var inAir = true #Tracks whether the player is not on the ground.
 func _ready():
 	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		print(event.scancode)
 		if event.scancode == jumpKey and !inAir: #Compare the event to the jumpKey var
-			print('yop')
 			apply_central_impulse(jumpImpulse)
 			inAir = true
 
 
 func _on_hit(body):
 	if body != floorNode:
-		print(body)
 		self.MODE_RIGID
 		yield(get_tree().create_timer(3.0), "timeout")
 		get_tree().change_scene("res://UI/GameOver.tscn")
@@ -34,3 +27,5 @@ func _on_hit(body):
 
 func _set_jump_key(scancode):
 	jumpKey = scancode
+func _set_label(s):
+	$Label.text = s

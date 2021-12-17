@@ -24,4 +24,13 @@ position = Vector2( 0, 1.90735e-06 )
 scale = Vector2( 3.2, 3.2 )
 texture = ExtResource( 1 )
 
+[node name="Label" type="Label" parent="."]
+margin_left = -25.0
+margin_top = -71.0
+margin_right = 29.0
+margin_bottom = -37.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="body_entered" from="." to="." method="_on_hit"]
