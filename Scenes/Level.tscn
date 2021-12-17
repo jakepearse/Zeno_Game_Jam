@@ -1,11 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Obstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Floor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Foreground.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 50 )
+extents = Vector2( 512, 34.5 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float speed;
+
+void fragment() {
+	vec2 texture_map = UV;
+	texture_map.x += speed * TIME;
+	vec4 color = texture(TEXTURE, texture_map);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/speed = 0.4
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
@@ -13,11 +33,20 @@ script = ExtResource( 3 )
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 512, 550 )
+position = Vector2( 512, 565.5 )
 shape = SubResource( 1 )
+
+[node name="ScrollingTexture" parent="Floor" instance=ExtResource( 4 )]
+material = SubResource( 3 )
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 204, 120 )
 
 [node name="Obstacle" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1008, 468 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
+spd = 20
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource( 6 )]
+spd = 50
