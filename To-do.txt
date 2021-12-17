@@ -1,0 +1,11 @@
+LEVEL:
+create system to spawn characters and obstacles
+(When spawning characters, remember to assign values to variables floorNode and jumpKey)
+
+CHARACTER:
+fine-tune controls so that holding the button makes you jump higher
+Game Over sequence
+
+OBSTACLE:
+Delete self when offscreen
+Make modular (differing heights, overhead obstacles)
