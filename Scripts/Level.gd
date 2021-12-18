@@ -3,7 +3,7 @@ var difficulty = 0
 
 const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
-const character_width = 64
+const character_width = 128
 
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
