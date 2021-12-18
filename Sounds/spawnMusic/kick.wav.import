@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kick.wav-ae65c9d65022465c987fabdc03a5f581.sample"
+
+[deps]
+
+source_file="res://Sounds/spawnMusic/kick.wav"
+dest_files=[ "res://.import/kick.wav-ae65c9d65022465c987fabdc03a5f581.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

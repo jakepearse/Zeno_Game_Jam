@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hiHat.wav-bc4a4586e5652bef5b6d0e9b59195a4c.sample"
+
+[deps]
+
+source_file="res://Sounds/spawnMusic/hiHat.wav"
+dest_files=[ "res://.import/hiHat.wav-bc4a4586e5652bef5b6d0e9b59195a4c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
