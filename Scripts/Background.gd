@@ -1,9 +1,5 @@
 extends ParallaxBackground
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var spd: int
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +9,3 @@ func _ready():
 
 func _process(delta):
 	scroll_offset.x -= spd * delta
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

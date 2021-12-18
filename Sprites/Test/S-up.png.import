@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pixilart Sprite Sheet (1).png-8787882484f944766691ee5317a8d949.stex"
+path="res://.import/S-up.png-db84a8da4b612309a32f4296c644b86c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/characterSprites/Pixilart Sprite Sheet (1).png"
-dest_files=[ "res://.import/Pixilart Sprite Sheet (1).png-8787882484f944766691ee5317a8d949.stex" ]
+source_file="res://Sprites/Test/S-up.png"
+dest_files=[ "res://.import/S-up.png-db84a8da4b612309a32f4296c644b86c.stex" ]
 
 [params]
 

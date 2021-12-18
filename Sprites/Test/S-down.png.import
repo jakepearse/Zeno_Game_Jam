@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pixilart Sprite Sheet (1).png-8787882484f944766691ee5317a8d949.stex"
+path="res://.import/S-down.png-3c1233e38902109bed30c44bc3f69204.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/characterSprites/Pixilart Sprite Sheet (1).png"
-dest_files=[ "res://.import/Pixilart Sprite Sheet (1).png-8787882484f944766691ee5317a8d949.stex" ]
+source_file="res://Sprites/Test/S-down.png"
+dest_files=[ "res://.import/S-down.png-3c1233e38902109bed30c44bc3f69204.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

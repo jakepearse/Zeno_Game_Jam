@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/characterSprites/Pixilart Sprite Sheet (1).png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 32 )
+extents = Vector2( 21, 19.5 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Jump"
@@ -70,6 +70,14 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+} ]
+
 [node name="Character" type="RigidBody2D"]
 mode = 2
 gravity_scale = 10.0
@@ -81,11 +89,12 @@ script = ExtResource( 2 )
 jumpImpulse = Vector2( 0, -500 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 1.90735e-06 )
-scale = Vector2( 3.2, 3.2 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 hframes = 9
 
@@ -105,5 +114,9 @@ anims/Jump = SubResource( 4 )
 anims/Land = SubResource( 5 )
 anims/RESET = SubResource( 2 )
 anims/Run = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+animation = "New Anim"
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]

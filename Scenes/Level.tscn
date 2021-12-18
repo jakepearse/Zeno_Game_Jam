@@ -36,6 +36,10 @@ shape = SubResource( 1 )
 
 [node name="ScrollingTexture" parent="Floor" instance=ExtResource( 4 )]
 material = SubResource( 3 )
+margin_left = -188.0
+margin_top = 520.0
+margin_right = 1265.0
+margin_bottom = 600.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 spd = 20
@@ -48,10 +52,10 @@ wait_time = 3.0
 autostart = true
 
 [node name="PlayerTimer" type="Timer" parent="."]
-wait_time = 4.404
+wait_time = 3.0
 autostart = true
 
-[node name="CharacterContainer" type="Node2D" parent="."]
+[node name="Sprite Positions" type="Node2D" parent="."]
 
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
