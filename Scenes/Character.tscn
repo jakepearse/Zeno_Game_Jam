@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Test/Pixilart Sprite Sheet (1).png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
@@ -70,6 +70,14 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+} ]
+
 [node name="Character" type="RigidBody2D"]
 mode = 2
 gravity_scale = 10.0
@@ -106,5 +114,9 @@ anims/Jump = SubResource( 4 )
 anims/Land = SubResource( 5 )
 anims/RESET = SubResource( 2 )
 anims/Run = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+animation = "New Anim"
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]
