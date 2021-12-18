@@ -6,7 +6,7 @@
 [ext_resource path="res://Sounds/footStep_1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/land.wav" type="AudioStream" id=6]
-[ext_resource path="res://Art/Untitled.png" type="Texture" id=7]
+[ext_resource path="res://Art/dust.png" type="Texture" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=24]
 
@@ -21,13 +21,15 @@ lifetime_randomness = 0.29
 trail_divisor = 12
 trail_size_modifier = SubResource( 23 )
 flag_disable_z = true
-spread = 157.94
+spread = 22.78
 gravity = Vector3( -50, -1, 0 )
-angular_velocity = 10.0
+angular_velocity = 52.35
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = -15.68
+angle = 169.4
+angle_random = 0.64
 anim_speed = 0.5
 anim_speed_random = 1.0
 
@@ -122,9 +124,10 @@ jumpImpulse = Vector2( 0, -500 )
 material = SubResource( 24 )
 use_parent_material = true
 position = Vector2( -7, 16 )
-amount = 150
-lifetime = 34.03
-randomness = 0.28
+amount = 80
+lifetime = 23.51
+randomness = 0.67
+local_coords = false
 process_material = SubResource( 21 )
 texture = ExtResource( 7 )
 
@@ -155,10 +158,13 @@ scale = Vector2( 2.57813, 3.60938 )
 frames = SubResource( 6 )
 animation = "Walk"
 <<<<<<< HEAD
+<<<<<<< HEAD
 frame = 2
 =======
 frame = 1
 >>>>>>> de75d910e7c9027a835206d31fe388624d31f342
+=======
+>>>>>>> dusty footsteps
 playing = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
