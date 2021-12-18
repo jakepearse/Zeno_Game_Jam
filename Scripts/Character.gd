@@ -18,7 +18,7 @@ func _unhandled_input(event):
 
 func _on_hit(body):
 	if body != floorNode: #Hit an enemy
-		self.MODE_RIGID #Statement does not work
+		self.mode =RigidBody2D.MODE_RIGID #Statement does not work
 		yield(get_tree().create_timer(1.0), "timeout")
 		get_tree().change_scene("res://UI/GameOver.tscn")
 	else: #Hit the floor
