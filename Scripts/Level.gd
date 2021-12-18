@@ -33,12 +33,12 @@ func _on_ObstacleTimer_timeout():
 	add_child(o)
 
 func _on_PlayerTimer_timeout():
-	match difficulty:
-		0:
-			assign_sprite(keyMap[0])
+	match difficulty: #Each case is executed sequentially
+		0:#Comments on this case should be considered copied to other cases
+			assign_sprite(keyMap[0]) #Create and position keysprite
 			keySprite.position = Vector2(64, 560)
 			
-			spawn_character()
+			spawn_character() #Create and position character
 			c.position = Vector2(64, 300)
 
 		1:
@@ -76,7 +76,7 @@ func spawn_character():
 	add_child(c)
 
 func assign_sprite(key):
-	match key:
+	match key: #Select a node, assign it to keySprite
 		KEY_A:
 			keySprite = keySpriteA.instance()
 		KEY_S:

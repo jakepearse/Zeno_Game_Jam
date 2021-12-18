@@ -8,4 +8,4 @@
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 downSprite = ExtResource( 2 )
-key = 83
+key = 68
