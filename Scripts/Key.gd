@@ -13,7 +13,7 @@ func _ready():
 		s,
 		'scale', ## property
 		Vector2(10, 10), ## from
-		Vector2(1, 1), ## to
+		Vector2(3, 3), ## to
 		0.6, ## dur
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
