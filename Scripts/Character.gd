@@ -29,7 +29,7 @@ func _on_hit(body):
 	if body != floorNode: #Hit an enemy
 		$DeathSound.play()
 		yield(get_tree().create_timer(1.0), "timeout")
-		get_tree().change_scene("res://UI/GameOver.tscn")
+		get_tree().change_scene("res://UI/MainMenu.tscn")
 	else: #Hit the floor
 		$Land.play(0.1)
 		$AnimatedSprite.play("Land")

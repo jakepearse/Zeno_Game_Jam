@@ -6,6 +6,7 @@ export var key:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Stars.emitting = true
 	texture = up_sprite
 
 func _input(event):
