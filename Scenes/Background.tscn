@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=1]
-[ext_resource path="res://Art/sky.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/backgroundSprites/cloud1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/backgroundSprites/sky.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/backgroundSprites/cloud2.png" type="Texture" id=4]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_offset = Vector2( 1024, 0 )
@@ -12,4 +14,33 @@ motion_mirroring = Vector2( 1024, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer"]
 position = Vector2( 511, 306 )
+texture = ExtResource( 3 )
+
+[node name="Cloud1" type="Sprite" parent="ParallaxLayer/Sprite"]
+position = Vector2( 392, -215 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
+
+[node name="Cloud2" type="Sprite" parent="ParallaxLayer/Sprite"]
+position = Vector2( -74, -98 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="Cloud3" type="Sprite" parent="ParallaxLayer/Sprite"]
+position = Vector2( -322, -234 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="Cloud4" type="Sprite" parent="ParallaxLayer/Sprite"]
+position = Vector2( 68, -232 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="Cloud5" type="Sprite" parent="ParallaxLayer/Sprite"]
+position = Vector2( -297, -81 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="Cloud2" type="Sprite" parent="ParallaxLayer/Sprite/Cloud5"]
+position = Vector2( 173.333, -24.3333 )
+texture = ExtResource( 4 )

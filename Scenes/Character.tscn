@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Sprites/characterSprites/t-rexSpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sounds/footStep_1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/land.wav" type="AudioStream" id=6]
+[ext_resource path="res://Art/dust.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42, 41.5 )
@@ -84,6 +85,32 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="Curve" id=22]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0.0326087, -343.636 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
+
+[sub_resource type="Curve" id=24]
+min_value = 28.0
+max_value = 100.0
+_data = [ Vector2( 0.0434783, 0.0136364 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 39.9107, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=25]
+curve = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=21]
+trail_divisor = 9
+trail_size_modifier = SubResource( 25 )
+flag_disable_z = true
+gravity = Vector3( -40, 0, 0 )
+angular_velocity_random = 1.0
+angular_velocity_curve = SubResource( 23 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
 [node name="Character" type="RigidBody2D"]
 mode = 2
 gravity_scale = 10.0
@@ -119,7 +146,7 @@ __meta__ = {
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
 animation = "Walk"
-frame = 2
+frame = 1
 playing = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
@@ -137,6 +164,17 @@ stream = ExtResource( 5 )
 
 [node name="Land" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="Dust" type="Particles2D" parent="."]
+use_parent_material = true
+position = Vector2( -31, 43 )
+scale = Vector2( 3, 3 )
+amount = 50
+lifetime = 23.02
+preprocess = 1.0
+local_coords = false
+process_material = SubResource( 21 )
+texture = ExtResource( 7 )
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_anim_finished"]
