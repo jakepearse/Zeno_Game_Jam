@@ -6,7 +6,7 @@
 [ext_resource path="res://Sounds/footStep_1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/land.wav" type="AudioStream" id=6]
-[ext_resource path="res://Art/dust.png" type="Texture" id=7]
+[ext_resource path="res://Art/dust2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42, 41.5 )
@@ -94,9 +94,7 @@ _data = [ Vector2( 0.0326087, -343.636 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 0.0
 curve = SubResource( 22 )
 
 [sub_resource type="Curve" id=24]
-min_value = 28.0
-max_value = 100.0
-_data = [ Vector2( 0.0434783, 0.0136364 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 39.9107, 0.0, 0, 0 ]
+_data = [ Vector2( 0.0108696, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.983696, 0 ), -7.88011, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=25]
 curve = SubResource( 24 )
@@ -146,6 +144,7 @@ __meta__ = {
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
 animation = "Walk"
+frame = 1
 playing = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
