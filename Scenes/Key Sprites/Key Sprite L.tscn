@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Test/L-Up.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/KeySprite.gd" type="Script" id=3]
+
+[node name="sprite" type="Sprite"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+key = 76
