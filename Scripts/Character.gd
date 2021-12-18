@@ -11,9 +11,10 @@ func _ready():
 func _process(delta):
 	if inAir:
 		if $Footsteps.playing: $Footsteps.stop()
+		if $Dust.playing: $Dust.stop()
 	else:
 		if !$Footsteps.playing: $Footsteps.play()
-	
+		if !$Dust.playing: $Dust.play()
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
