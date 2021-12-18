@@ -1,4 +1,5 @@
 extends Node2D
+var difficulty = 0
 
 const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
@@ -61,11 +62,16 @@ func _on_ObstacleTimer_timeout():
 	add_child(o)
 
 func _on_PlayerTimer_timeout():
-	var difficulty = $CharecterContainer.get_child_count() ## use the child count
-	var x = character_width + difficulty * character_width ## calculate where to place the next charecter
-	assign_sprite(keyMap[0]) #Create and position keysprite
-	keySprite.position = Vector2(x, spriteHeight)
-	spawn_character(Vector2(x, charHeight)) #Create and position character
+	match difficulty:
+		4:
+			pass #Difficulty mod will go here
+		_:
+			var charCount = $CharecterContainer.get_child_count()
+			var x = character_width + charCount * character_width ## calculate where to place the next charecter
+			assign_sprite(keyMap[0]) #Create and position keysprite
+			keySprite.position = Vector2(x, spriteHeight)
+			spawn_character(Vector2(x, charHeight)) #Create and position character
+	difficulty = difficulty + 1 #Difficulty has increased.
 
 
 func spawn_character(pos):
