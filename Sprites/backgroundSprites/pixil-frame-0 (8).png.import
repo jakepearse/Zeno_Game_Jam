@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dino1.png-8e9e12cb7ce7da8de9d14bc3eda2a838.stex"
+path="res://.import/pixil-frame-0 (8).png-8b81693dca4d7a26b39b47bf7d14ca65.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Test/Dino1.png"
-dest_files=[ "res://.import/Dino1.png-8e9e12cb7ce7da8de9d14bc3eda2a838.stex" ]
+source_file="res://Sprites/backgroundSprites/pixil-frame-0 (8).png"
+dest_files=[ "res://.import/pixil-frame-0 (8).png-8b81693dca4d7a26b39b47bf7d14ca65.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

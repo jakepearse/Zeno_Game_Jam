@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pixilart Sprite Sheet (1).png-976712d7a7736434173f38502aa481b8.stex"
+path="res://.import/palmTree1.png-3e9a2efb02dd51bfd9e00d660801bb41.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Test/Pixilart Sprite Sheet (1).png"
-dest_files=[ "res://.import/Pixilart Sprite Sheet (1).png-976712d7a7736434173f38502aa481b8.stex" ]
+source_file="res://Sprites/backgroundSprites/palmTree1.png"
+dest_files=[ "res://.import/palmTree1.png-3e9a2efb02dd51bfd9e00d660801bb41.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
