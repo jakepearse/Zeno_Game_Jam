@@ -1,10 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Sounds/spawnMusic/arp.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sounds/spawnMusic/shaker.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Foreground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/spawnMusic/rimShot.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/spawnMusic/snare.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/spawnMusic/bass.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/spawnMusic/openHat2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/spawnMusic/guitar.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/spawnMusic/kick.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/spawnMusic/sax.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/spawnMusic/openHat.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/spawnMusic/bells.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/spawnMusic/hiHat.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/spawnMusic/piano.wav" type="AudioStream" id=17]
+[ext_resource path="res://Scenes/InstrumentSoundsContainer.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 57 )
@@ -64,6 +77,81 @@ autostart = true
 stream = ExtResource( 1 )
 autoplay = true
 
+[node name="InstrumentSoundsContainer" type="Node" parent="."]
+script = ExtResource( 18 )
+
+[node name="Bass" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 9 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Bells" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 15 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Guitar" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 11 )
+volume_db = -80.0
+autoplay = true
+
+[node name="HiHat" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 16 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Kick" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 12 )
+volume_db = -80.0
+autoplay = true
+
+[node name="OpenHat2" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 10 )
+volume_db = -80.0
+autoplay = true
+
+[node name="OpenHat" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 14 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Piano" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 17 )
+volume_db = -80.0
+autoplay = true
+
+[node name="RimShot" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 7 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Sax" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 13 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Shaker" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 2 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Snare" type="AudioStreamPlayer" parent="InstrumentSoundsContainer"]
+stream = ExtResource( 8 )
+volume_db = -80.0
+autoplay = true
+
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
 [connection signal="finished" from="LevelBackGroundMusic" to="." method="_on_LevelBackGroundMusic_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Bass" to="InstrumentSoundsContainer" method="_on_Bass_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Bells" to="InstrumentSoundsContainer" method="_on_Bells_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Guitar" to="InstrumentSoundsContainer" method="_on_Guitar_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/HiHat" to="InstrumentSoundsContainer" method="_on_HiHat_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Kick" to="InstrumentSoundsContainer" method="_on_Kick_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/OpenHat2" to="InstrumentSoundsContainer" method="_on_OpenHat2_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/OpenHat" to="InstrumentSoundsContainer" method="_on_OpenHat_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Piano" to="InstrumentSoundsContainer" method="_on_Piano_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/RimShot" to="InstrumentSoundsContainer" method="_on_RimShot_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Sax" to="InstrumentSoundsContainer" method="_on_Sax_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Shaker" to="InstrumentSoundsContainer" method="_on_Shaker_finished"]
+[connection signal="finished" from="InstrumentSoundsContainer/Snare" to="InstrumentSoundsContainer" method="_on_Snare_finished"]
