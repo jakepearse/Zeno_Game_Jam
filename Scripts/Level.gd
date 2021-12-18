@@ -51,6 +51,7 @@ func _on_PlayerTimer_timeout():
 			continue #Also spawn a dino
 		_:
 			var charCount = $CharecterContainer.get_child_count()
+			if charCount >= 8: continue # only 8 allowed
 			var x = character_width + charCount * character_width ## calculate where to place the next charecter
 			assign_sprite(keyMap[0]) #Create and position keysprite
 			keySprite.position = Vector2(x, spriteHeight)
