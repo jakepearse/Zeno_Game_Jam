@@ -46,6 +46,3 @@ func _on_anim_finished():
 	if $AnimatedSprite.animation == "Land":
 		$AnimatedSprite.play("Walk")
 
-
-func _on_CharacterCoda_finished():
-	$CharacterCoda.play()
