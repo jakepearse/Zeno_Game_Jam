@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 32 )
+extents = Vector2( 32, 50.5 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 1 )
@@ -91,7 +91,7 @@ script = ExtResource( 2 )
 jumpImpulse = Vector2( 0, -500 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.5 )
+position = Vector2( 20, 40.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -103,17 +103,20 @@ hframes = 13
 frame = 3
 
 [node name="Label" type="Label" parent="."]
-margin_left = -25.0
-margin_top = -71.0
-margin_right = 29.0
-margin_bottom = -37.0
+margin_left = -12.0
+margin_top = -67.0
+margin_right = 52.0
+margin_bottom = -17.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 20.75, 35.25 )
+scale = Vector2( 2.57813, 3.60938 )
 frames = SubResource( 6 )
 animation = "Walk"
+frame = 2
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_hit"]
