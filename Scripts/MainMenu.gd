@@ -12,5 +12,5 @@ func _on_MenuMusic_finished():
 
 
 func _on_Transition_scene_changed():
-	print('c')
 	get_tree().change_scene("res://Scenes/Level.tscn")
+	
