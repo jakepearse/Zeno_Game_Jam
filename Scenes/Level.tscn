@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Foreground.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 34.5 )
+extents = Vector2( 512, 57 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -32,15 +32,16 @@ script = ExtResource( 3 )
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2( 512, 565.5 )
+position = Vector2( 512, 543 )
 shape = SubResource( 1 )
 
 [node name="ScrollingTexture" parent="Floor" instance=ExtResource( 4 )]
 material = SubResource( 3 )
 margin_left = -188.0
-margin_top = 520.0
+margin_top = 450.0
 margin_right = 1265.0
-margin_bottom = 600.0
+margin_bottom = 531.0
+rect_scale = Vector2( 3, 3 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 5 )]
 spd = 20
@@ -49,11 +50,10 @@ spd = 20
 spd = 50
 
 [node name="ObstacleTimer" type="Timer" parent="."]
-wait_time = 6.0
-autostart = true
+wait_time = 2.0
 
 [node name="PlayerTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 autostart = true
 
 [node name="Sprite Positions" type="Node2D" parent="."]
