@@ -2,8 +2,8 @@ extends Node2D
 
 const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
-
-var difficulty = 0 #An int that increments with every timeout of PlayerTimer.
+const character_width = 64
+#var difficulty = 0 #An int that increments with every timeout of PlayerTimer.
 #Evaluated in a match (think switch) statement to determine the next modifier.
 
 onready var Character = preload("res://Scenes/Character.tscn")
@@ -33,47 +33,19 @@ func _on_ObstacleTimer_timeout():
 	add_child(o)
 
 func _on_PlayerTimer_timeout():
-	match difficulty: #Each case is executed sequentially
-		0:#Comments on this case should be considered copied to other cases
-			assign_sprite(keyMap[0]) #Create and position keysprite
-			keySprite.position = Vector2(64, 560)
-			
-			spawn_character() #Create and position character
-			c.position = Vector2(64, 300)
+	var difficulty = $CharecterContainer.get_child_count() ## use the child count
+	var x = character_width + difficulty * character_width ## calculate where to place the next charecter
+	assign_sprite(keyMap[0]) #Create and position keysprite
+	keySprite.position = Vector2(x, spriteHeight)
+	spawn_character(Vector2(x, charHeight)) #Create and position character
 
-		1:
-			assign_sprite(keyMap[0])
-			keySprite.position = Vector2(64*2, spriteHeight)
-			
-			spawn_character()
-			c.position = Vector2(64 * 2, charHeight)
-		
-		2:
-			assign_sprite(keyMap[0])
-			keySprite.position = Vector2(64 * 3, spriteHeight)
-			
-			spawn_character()
-			c.position = Vector2(64 * 3, charHeight)
-		3:
-			assign_sprite(keyMap[0])
-			keySprite.position = Vector2(64 * 4, spriteHeight)
-			
-			spawn_character()
-			c.position = Vector2(64 * 4, charHeight)
-		4:
-			assign_sprite(keyMap[0])
-			keySprite.position = Vector2(64 * 5, spriteHeight)
-			
-			spawn_character()
-			c.position = Vector2(64 * 5, charHeight)
-	difficulty = difficulty + 1
-	
-func spawn_character():
+
+func spawn_character(pos):
 	c = Character.instance()
 	c.floorNode = $Floor
-	
+	c.position = pos
 	c.jumpKey = keyMap.pop_front()
-	add_child(c)
+	$CharecterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
 
 func assign_sprite(key):
 	match key: #Select a node, assign it to keySprite
