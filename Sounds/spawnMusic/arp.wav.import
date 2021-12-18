@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/arp.wav-93ab5fe5592a44a28d5cf03f17f70112.sample"
+
+[deps]
+
+source_file="res://Sounds/spawnMusic/arp.wav"
+dest_files=[ "res://.import/arp.wav-93ab5fe5592a44a28d5cf03f17f70112.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

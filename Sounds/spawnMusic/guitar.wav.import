@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/guitar.wav-bd7dd6bdcc1060a5e9e65bff6b1748d2.sample"
+
+[deps]
+
+source_file="res://Sounds/spawnMusic/guitar.wav"
+dest_files=[ "res://.import/guitar.wav-bd7dd6bdcc1060a5e9e65bff6b1748d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

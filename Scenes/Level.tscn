@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Sounds/spawnMusic/arp.wav" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
@@ -48,14 +49,21 @@ spd = 20
 spd = 50
 
 [node name="ObstacleTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 6.0
 autostart = true
 
 [node name="PlayerTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [node name="Sprite Positions" type="Node2D" parent="."]
 
+[node name="CharecterContainer" type="Node" parent="."]
+
+[node name="LevelBackGroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
+[connection signal="finished" from="LevelBackGroundMusic" to="." method="_on_LevelBackGroundMusic_finished"]

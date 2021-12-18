@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rimShot.wav-af64ca7f7e167f6776c71ca929e60063.sample"
+
+[deps]
+
+source_file="res://Sounds/spawnMusic/rimShot.wav"
+dest_files=[ "res://.import/rimShot.wav-af64ca7f7e167f6776c71ca929e60063.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

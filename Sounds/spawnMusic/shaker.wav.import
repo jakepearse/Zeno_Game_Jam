@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shaker.wav-1a820e4b9161a1a7cfbb3fc1a4ebdddd.sample"
+
+[deps]
+
+source_file="res://Sounds/spawnMusic/shaker.wav"
+dest_files=[ "res://.import/shaker.wav-1a820e4b9161a1a7cfbb3fc1a4ebdddd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
