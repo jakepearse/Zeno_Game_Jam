@@ -3,7 +3,7 @@ var difficulty = 0
 
 const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
-const character_width = 128
+const character_width = 96
 
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
@@ -63,8 +63,9 @@ func _on_ObstacleTimer_timeout():
 
 func _on_PlayerTimer_timeout():
 	match difficulty:
-		4:
-			pass #Difficulty mod will go here
+		0:
+			$ObstacleTimer.start() #Begin spawning obstacles
+			continue #Also spawn a dino
 		_:
 			var charCount = $CharecterContainer.get_child_count()
 			var x = character_width + charCount * character_width ## calculate where to place the next charecter

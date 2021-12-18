@@ -50,11 +50,10 @@ spd = 20
 spd = 50
 
 [node name="ObstacleTimer" type="Timer" parent="."]
-wait_time = 6.0
-autostart = true
+wait_time = 2.0
 
 [node name="PlayerTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 6.0
 autostart = true
 
 [node name="Sprite Positions" type="Node2D" parent="."]
