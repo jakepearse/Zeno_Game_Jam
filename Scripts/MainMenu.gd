@@ -29,7 +29,8 @@ func _on_Button_pressed():
 	start_game()
 
 func start_game():
-		$CanvasLayer2/Transition.Out(2.0)
+		$TransitionSound.play()
+		$CanvasLayer2/Transition.Out(1.5)
 
 func _on_MenuMusic_finished():
 	$MenuMusic.play()

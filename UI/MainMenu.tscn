@@ -1,22 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/titleScreenMusic.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Transition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Fonts/dynamicfontdata.tres" type="DynamicFontData" id=4]
 [ext_resource path="res://Sprites/UISprites/TitleScreen.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/transition.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 4 )
-
-[sub_resource type="CanvasItemMaterial" id=3]
-resource_local_to_scene = true
-
-[sub_resource type="DynamicFont" id=2]
-size = 64
-outline_size = 8
-outline_color = Color( 0.145098, 0.690196, 0.0117647, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
@@ -105,31 +97,21 @@ __meta__ = {
 [node name="Keys" type="Node2D" parent="Node/CanvasLayer/VBoxContainer"]
 position = Vector2( 0, 16 )
 
-[node name="Title" type="Label" parent="Node/CanvasLayer"]
-material = SubResource( 3 )
-margin_top = 177.0
-margin_right = 1024.0
-margin_bottom = 241.0
-custom_fonts/font = SubResource( 2 )
-text = "Game Title"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer2" instance=ExtResource( 3 )]
 color = Color( 0.596078, 0.909804, 0.0313726, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TransitionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="finished" from="MenuMusic" to="." method="_on_MenuMusic_finished"]
 [connection signal="pressed" from="Node/CanvasLayer/VBoxContainer/DepricatedButton" to="." method="_on_Button_pressed"]
