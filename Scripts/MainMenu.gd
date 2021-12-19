@@ -46,6 +46,7 @@ func add_key_sprites():
 		sprite.down_sprite = key_sprite_textures[key].down
 		sprite.position = Vector2(256 + num_sprites_added * 64, 400)
 		$Node/CanvasLayer/VBoxContainer/Keys.add_child(keySprite)
+		sprite.get_node("Stars").emitting = false
 	yield(get_tree().create_timer(0.1), "timeout")
 	$Node/CanvasLayer/SpaceLabel.visible = true
 

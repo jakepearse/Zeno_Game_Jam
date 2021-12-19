@@ -114,6 +114,7 @@ __meta__ = {
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer2" instance=ExtResource( 3 )]
+visible = false
 color = Color( 0.596078, 0.909804, 0.0313726, 1 )
 
 [node name="TransitionSound" type="AudioStreamPlayer" parent="."]

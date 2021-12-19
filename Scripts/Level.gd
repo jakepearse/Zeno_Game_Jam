@@ -7,7 +7,7 @@ const character_width = 96
 
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
-
+onready var Meteor = preload("res://Scenes/MetorTrail.tscn")
 onready var KeySprite = preload("res://Scenes/KeySprite.tscn")
 
 var charCount = 0
@@ -78,7 +78,6 @@ func spawn_character(pos):
 	c.jumpKey = keyMap.pop_front()
 
 	var idx = charCount % dino_sprites.size()
-	print(dino_sprites[idx])
 	c.add_child(dino_sprites[charCount % dino_sprites.size()].instance())
 	var Footsteps = c.get_node("Footsteps")
 	var random_instrument:AudioStreamPlayer = $InstrumentSoundsContainer.get_children()[randi() % $InstrumentSoundsContainer.get_child_count()-1]
