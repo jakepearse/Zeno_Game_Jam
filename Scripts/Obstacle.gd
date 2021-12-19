@@ -8,5 +8,5 @@ func _ready():
 
 func _process(delta):
 	move_and_collide(moveVector * delta) #Move the object
-	if position.x < 0: #If this object moves offscreen
-		queue_free() #PERISH
+#	if position.x < 0: #If this object moves offscreen
+#		queue_free() #PERISH
