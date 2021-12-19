@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/titleScreenMusic.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Transition.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/UISprites/TitleScreen.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/UISprites/START.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/dynamicfontdata.tres" type="DynamicFontData" id=4]
+[ext_resource path="res://Sprites/UISprites/TitleScreen.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="CanvasItemMaterial" id=3]
+resource_local_to_scene = true
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_size = 8
+outline_color = Color( 0.145098, 0.690196, 0.0117647, 1 )
+font_data = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -23,8 +36,83 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="Node"]
 
 [node name="ColorRect" type="ColorRect" parent="Node/CanvasLayer"]
-margin_right = 1022.0
-margin_bottom = 599.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.694118, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Node/CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -469.0
+margin_top = -299.0
+margin_right = 462.0
+margin_bottom = 295.0
+color = Color( 0.960784, 0.960784, 0.960784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpaceLabel" type="Label" parent="Node/CanvasLayer"]
+visible = false
+margin_top = 474.0
+margin_right = 1024.0
+margin_bottom = 506.0
+custom_fonts/font = SubResource( 1 )
+text = "Press [Space] to Start
+
+[esc] to Quit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node/CanvasLayer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 14.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FingersLabel" type="Label" parent="Node/CanvasLayer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 32.0
+custom_fonts/font = SubResource( 1 )
+text = "Fingers on \"home row\" Keys"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DepricatedButton" type="Button" parent="Node/CanvasLayer/VBoxContainer"]
+visible = false
+margin_top = 36.0
+margin_right = 1024.0
+margin_bottom = 56.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Keys" type="Node2D" parent="Node/CanvasLayer/VBoxContainer"]
+position = Vector2( 0, 16 )
+
+[node name="Title" type="Label" parent="Node/CanvasLayer"]
+material = SubResource( 3 )
+margin_top = 177.0
+margin_right = 1024.0
+margin_bottom = 241.0
+custom_fonts/font = SubResource( 2 )
+text = "Game Title"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,20 +122,16 @@ __meta__ = {
 [node name="Transition" parent="CanvasLayer2" instance=ExtResource( 3 )]
 color = Color( 0.596078, 0.909804, 0.0313726, 1 )
 
-[node name="TitleScreen" type="Sprite" parent="CanvasLayer2"]
-position = Vector2( 512, 301 )
-texture = ExtResource( 4 )
-
-[node name="Button" type="Button" parent="CanvasLayer2"]
-margin_left = 442.0
-margin_top = 503.0
-margin_right = 566.0
-margin_bottom = 546.0
-icon = ExtResource( 5 )
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [connection signal="finished" from="MenuMusic" to="." method="_on_MenuMusic_finished"]
+[connection signal="pressed" from="Node/CanvasLayer/VBoxContainer/DepricatedButton" to="." method="_on_Button_pressed"]
 [connection signal="scene_changed" from="CanvasLayer2/Transition" to="." method="_on_Transition_scene_changed"]
-[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_on_Button_pressed"]
+[connection signal="transition_finished" from="CanvasLayer2/Transition" to="." method="_on_Transition_transition_finished"]
