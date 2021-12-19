@@ -29,6 +29,7 @@ func _on_Button_pressed():
 	start_game()
 
 func start_game():
+		$MenuMusic.set_volume_db(-80)
 		$TransitionSound.play()
 		$CanvasLayer2/Transition.Out(1.5)
 

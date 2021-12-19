@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/arp_bells.wav-10c1636422919f20a3258b22c5ead4a0.sample"
+
+[deps]
+
+source_file="res://Sounds/revisedSpawnMusic/arp_bells.wav"
+dest_files=[ "res://.import/arp_bells.wav-10c1636422919f20a3258b22c5ead4a0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

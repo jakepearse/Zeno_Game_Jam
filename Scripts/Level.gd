@@ -5,6 +5,7 @@ const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
 const character_width = 96
 
+
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
 onready var Meteor = preload("res://Scenes/MeteorTrail.tscn")
@@ -23,12 +24,12 @@ onready var key_sprite_textures = {
 	KEY_L: { 'up' : load("res://Sprites/Test/L-Up.png"), 'down': load("res://Sprites/Test/L-Down.png") }
 }
 
-onready var footstep_streams = [
-	load("res://Sounds/footStep_1.wav"),
-	load("res://Sounds/footStep_2.wav"),
-	load("res://Sounds/footStep_3.wav"),
-	load("res://Sounds/footStep_4.wav")
-]
+##onready var footstep_streams = [
+##	load("res://Sounds/footStep_1.wav"),
+##	load("res://Sounds/footStep_2.wav"),
+##	load("res://Sounds/footStep_3.wav"),
+##	load("res://Sounds/footStep_4.wav")
+##]
 
 # changed to animation scenes
 onready var Trex = preload("res://Scenes/DinoAnimations/TRex.tscn")
@@ -119,10 +120,10 @@ func spawn_character(pos):
 
 	var idx = charCount % dino_sprites.size()
 	c.add_child(dino_sprites[charCount % dino_sprites.size()].instance())
-	var Footsteps = c.get_node("Footsteps")
+	##var Footsteps = c.get_node("Footsteps")
 	var random_instrument:AudioStreamPlayer = $InstrumentSoundsContainer.get_children()[randi() % $InstrumentSoundsContainer.get_child_count()-1]
 	if random_instrument.get_volume_db() == -80: random_instrument.set_volume_db(0) ## set the background sound
-	Footsteps.stream = footstep_streams[randi() % footstep_streams.size()] ## set the footstep sound
+	
 	$CharecterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
 	
 	#	You cant just switch out the frames, sadly you have to build a whole mess of stuff 1st...
