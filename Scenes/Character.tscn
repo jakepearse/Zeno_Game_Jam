@@ -71,7 +71,7 @@ __meta__ = {
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "Walk"
-frame = 1
+frame = 2
 playing = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
