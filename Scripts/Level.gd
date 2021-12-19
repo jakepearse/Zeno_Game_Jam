@@ -31,12 +31,13 @@ onready var footstep_streams = [
 	load("res://Sounds/footStep_4.wav")
 ]
 
-onready var dino_sprites = [
-	load("res://Sprites/CharacterSprites/trex.tres"),
-	load("res://Sprites/CharacterSprites/stegasaurus.tres"),
-	load("res://Sprites/CharacterSprites/triceratops.tres"),
-	load("res://Sprites/CharacterSprites/brontosaurus.tres")
-]
+# changed to animation scenes
+onready var Trex = preload("res://Scenes/DinoAnimations/TRex.tscn")
+onready var Stego = preload("res://Scenes/DinoAnimations/Stego.tscn")
+onready var Triceratops = preload("res://Scenes/DinoAnimations/Triceratops.tscn")
+onready var Bronto = preload("res://Scenes/DinoAnimations/Bronto.tscn")
+onready var dino_sprites = [Trex, Stego, Triceratops, Bronto]
+
 
 var keyMap = [KEY_A, KEY_S, KEY_D, KEY_F, KEY_H, KEY_J, KEY_K, KEY_L]
 
@@ -44,8 +45,10 @@ var c:Node #New character spawns will be assigned to this variable.
 var keySprite:Sprite#:Sprite #New Keysprite spawns will be assigned to this var.
 	
 func _ready():
+	$CanvasLayer/Transition.In (1.0)
 	randomize() #Set a random seed for RNG
 	keyMap.shuffle() #Randomize the order that the keys will be introduced in
+	
 
 func _on_ObstacleTimer_timeout():
 #	return # begone foul obstacles
@@ -81,14 +84,21 @@ func spawn_character(pos):
 	c.floorNode = $Floor
 	c.position = pos
 	c.jumpKey = keyMap.pop_front()
+
+	var idx = charCount % dino_sprites.size()
+	print(dino_sprites[idx])
+	c.add_child(dino_sprites[charCount % dino_sprites.size()].instance())
 	var Footsteps = c.get_node("Footsteps")
 	var random_instrument:AudioStreamPlayer = $InstrumentSoundsContainer.get_children()[randi() % $InstrumentSoundsContainer.get_child_count()-1]
 	if random_instrument.get_volume_db() == -80: random_instrument.set_volume_db(0) ## set the background sound
 	Footsteps.stream = footstep_streams[randi() % footstep_streams.size()] ## set the footstep sound
 	$CharecterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
 	
+	#	You cant just switch out the frames, sadly you have to build a whole mess of stuff 1st...
+	# instead make a Scene & instance that with all that animation data in there
 	#FIXME: access the Frames property of c's AnimatedSprite node
-	c.get_node("AnimatedSprite").frames = dino_sprites[charCount % dino_sprites.size()]
+	#c.get_node("AnimatedSprite").frames = dino_sprites[charCount % dino_sprites.size()]
+
 
 func assign_sprite(key):
 	var k = KeySprite.instance()
