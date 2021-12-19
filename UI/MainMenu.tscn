@@ -4,7 +4,7 @@
 [ext_resource path="res://Sounds/titleScreenMusic.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Transition.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Fonts/dynamicfontdata.tres" type="DynamicFontData" id=4]
-[ext_resource path="res://Sprites/UISprites/TitleScreen.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UISprites/Title.png" type="Texture" id=5]
 [ext_resource path="res://Sounds/transition.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -51,7 +51,6 @@ __meta__ = {
 }
 
 [node name="SpaceLabel" type="Label" parent="Node/CanvasLayer"]
-visible = false
 margin_top = 474.0
 margin_right = 1024.0
 margin_bottom = 506.0
@@ -100,11 +99,11 @@ position = Vector2( 0, 16 )
 [node name="TextureRect" type="TextureRect" parent="Node/CanvasLayer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -244.0
-margin_top = 8.0
-margin_right = 780.0
-margin_bottom = 608.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = -423.0
+margin_top = -115.0
+margin_right = 601.0
+margin_bottom = 485.0
+rect_scale = Vector2( 0.829417, 0.905271 )
 texture = ExtResource( 5 )
 stretch_mode = 4
 __meta__ = {
