@@ -140,6 +140,13 @@ stream = ExtResource( 8 )
 volume_db = -80.0
 autoplay = true
 
+[node name="SecondDinoDelay" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+__meta__ = {
+"_editor_description_": "This is the delay that the second dino spawns after."
+}
+
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
 [connection signal="finished" from="LevelBackGroundMusic" to="." method="_on_LevelBackGroundMusic_finished"]
@@ -155,3 +162,4 @@ autoplay = true
 [connection signal="finished" from="InstrumentSoundsContainer/Sax" to="InstrumentSoundsContainer" method="_on_Sax_finished"]
 [connection signal="finished" from="InstrumentSoundsContainer/Shaker" to="InstrumentSoundsContainer" method="_on_Shaker_finished"]
 [connection signal="finished" from="InstrumentSoundsContainer/Snare" to="InstrumentSoundsContainer" method="_on_Snare_finished"]
+[connection signal="timeout" from="SecondDinoDelay" to="." method="_on_SecondDinoDelay_timeout"]
