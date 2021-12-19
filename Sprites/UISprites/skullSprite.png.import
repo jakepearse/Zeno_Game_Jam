@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/A-up.png-8eaecda605ed06aa8d6a9fc83707d973.stex"
+path="res://.import/skullSprite.png-9ca77ec230973ce9ae81f89e4ea1fc1b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Test/A-up.png"
-dest_files=[ "res://.import/A-up.png-8eaecda605ed06aa8d6a9fc83707d973.stex" ]
+source_file="res://Sprites/UISprites/skullSprite.png"
+dest_files=[ "res://.import/skullSprite.png-9ca77ec230973ce9ae81f89e4ea1fc1b.stex" ]
 
 [params]
 
