@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/J-Down.png-99c71c21967d698bfc4a7dfcc0e5aff8.stex"
+path="res://.import/J-down.png-3aeba87a89ac4e197aee18ccfac80fbe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Test/J-Down.png"
-dest_files=[ "res://.import/J-Down.png-99c71c21967d698bfc4a7dfcc0e5aff8.stex" ]
+source_file="res://Sprites/Test/J-down.png"
+dest_files=[ "res://.import/J-down.png-3aeba87a89ac4e197aee18ccfac80fbe.stex" ]
 
 [params]
 
