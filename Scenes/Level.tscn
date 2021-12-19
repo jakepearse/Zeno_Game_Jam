@@ -17,7 +17,7 @@
 [ext_resource path="res://Sounds/spawnMusic/bells.wav" type="AudioStream" id=15]
 [ext_resource path="res://Sounds/spawnMusic/hiHat.wav" type="AudioStream" id=16]
 [ext_resource path="res://Sounds/spawnMusic/piano.wav" type="AudioStream" id=17]
-[ext_resource path="res://Scenes/InstrumentSoundsContainer.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/InstrumentSoundsContainer.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 57 )

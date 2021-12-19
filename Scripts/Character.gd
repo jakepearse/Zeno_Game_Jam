@@ -38,8 +38,7 @@ func _on_hit(body):
 
 func _set_jump_key(scancode):
 	jumpKey = scancode
-func _set_label(s):
-	$Label.text = s
+
 
 
 func _on_anim_finished():
