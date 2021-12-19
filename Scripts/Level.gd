@@ -34,7 +34,8 @@ onready var footstep_streams = [
 onready var dino_sprites = [
 	load("res://Sprites/CharacterSprites/trex.tres"),
 	load("res://Sprites/CharacterSprites/stegasaurus.tres"),
-	load("res://Sprites/CharacterSprites/triceratops.tres")
+	load("res://Sprites/CharacterSprites/triceratops.tres"),
+	load("res://Sprites/CharacterSprites/brontosaurus.tres")
 ]
 
 var keyMap = [KEY_A, KEY_S, KEY_D, KEY_F, KEY_H, KEY_J, KEY_K, KEY_L]
