@@ -30,7 +30,7 @@ autoplay = true
 [node name="ColorRect" type="ColorRect" parent="Node/CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0.694118, 1, 1 )
+color = Color( 0.211765, 0.827451, 0.168627, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -97,18 +97,24 @@ __meta__ = {
 [node name="Keys" type="Node2D" parent="Node/CanvasLayer/VBoxContainer"]
 position = Vector2( 0, 16 )
 
+[node name="TextureRect" type="TextureRect" parent="Node/CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -244.0
+margin_top = 8.0
+margin_right = 780.0
+margin_bottom = 608.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer2" instance=ExtResource( 3 )]
 color = Color( 0.596078, 0.909804, 0.0313726, 1 )
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TransitionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

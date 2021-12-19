@@ -33,8 +33,8 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = SubResource( 2 )
-shader_param/in_color = Color( 0, 0.694118, 1, 1 )
-shader_param/out_color = Color( 0, 0.694118, 1, 0 )
+shader_param/in_color = Color( 0.211765, 0.827451, 0.168627, 1 )
+shader_param/out_color = Color( 0, 1, 0, 0 )
 shader_param/in_out = 0.984
 shader_param/position = 1.0
 shader_param/size = Vector2( 30, 30 )
