@@ -68,10 +68,10 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "Walk"
-frame = 1
 playing = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
