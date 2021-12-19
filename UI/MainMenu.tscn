@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/titleScreenMusic.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Transition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/UISprites/TitleScreen.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UISprites/START.png" type="Texture" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -32,12 +34,16 @@ __meta__ = {
 [node name="Transition" parent="CanvasLayer2" instance=ExtResource( 3 )]
 color = Color( 0.596078, 0.909804, 0.0313726, 1 )
 
+[node name="TitleScreen" type="Sprite" parent="CanvasLayer2"]
+position = Vector2( 512, 301 )
+texture = ExtResource( 4 )
+
 [node name="Button" type="Button" parent="CanvasLayer2"]
-margin_left = 490.0
-margin_top = 406.0
-margin_right = 531.0
-margin_bottom = 426.0
-text = "Start"
+margin_left = 442.0
+margin_top = 503.0
+margin_right = 566.0
+margin_bottom = 546.0
+icon = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

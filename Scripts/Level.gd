@@ -10,6 +10,8 @@ onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
 
 onready var KeySprite = preload("res://Scenes/KeySprite.tscn")
 
+var charCount = 0
+
 ## load the textures so we can switch the keysprites in per instance
 onready var key_sprite_textures = {
 	KEY_A: { 'up': load("res://Sprites/Test/A-Up.png"), 'down': load("res://Sprites/Test/A-Down.png") },
@@ -27,6 +29,13 @@ onready var footstep_streams = [
 	load("res://Sounds/footStep_2.wav"),
 	load("res://Sounds/footStep_3.wav"),
 	load("res://Sounds/footStep_4.wav")
+]
+
+onready var dino_sprites = [
+	load("res://Sprites/CharacterSprites/trex.tres"),
+	load("res://Sprites/CharacterSprites/stegasaurus.tres"),
+	load("res://Sprites/CharacterSprites/triceratops.tres"),
+	load("res://Sprites/CharacterSprites/brontosaurus.tres")
 ]
 
 var keyMap = [KEY_A, KEY_S, KEY_D, KEY_F, KEY_H, KEY_J, KEY_K, KEY_L]
@@ -50,7 +59,7 @@ func _on_PlayerTimer_timeout():
 			$ObstacleTimer.start() #Begin spawning obstacles
 			continue #Also spawn a dino
 		_:
-			var charCount = $CharecterContainer.get_child_count()
+			charCount = $CharecterContainer.get_child_count()
 			if charCount >= 8: continue # only 8 allowed
 			var x = character_width + charCount * character_width ## calculate where to place the next charecter
 			assign_sprite(keyMap[0]) #Create and position keysprite
@@ -69,6 +78,9 @@ func spawn_character(pos):
 	if random_instrument.get_volume_db() == -80: random_instrument.set_volume_db(0) ## set the background sound
 	Footsteps.stream = footstep_streams[randi() % footstep_streams.size()] ## set the footstep sound
 	$CharecterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
+	
+	#FIXME: access the Frames property of c's AnimatedSprite node
+	c.get_node("AnimatedSprite").frames = dino_sprites[charCount % dino_sprites.size()]
 
 func assign_sprite(key):
 	var k = KeySprite.instance()
