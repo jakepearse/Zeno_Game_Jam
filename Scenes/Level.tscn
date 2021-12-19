@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Sounds/spawnMusic/arp.wav" type="AudioStream" id=1]
 [ext_resource path="res://Sounds/spawnMusic/shaker.wav" type="AudioStream" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Sounds/spawnMusic/piano.wav" type="AudioStream" id=17]
 [ext_resource path="res://Scripts/InstrumentSoundsContainer.gd" type="Script" id=18]
 [ext_resource path="res://Scenes/Transition.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Fonts/dynamicfontdata.tres" type="DynamicFontData" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 57 )
@@ -39,6 +40,10 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource( 2 )
 shader_param/speed = 0.4
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 20 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
@@ -153,6 +158,31 @@ spd = 20
 [node name="ParallaxBackground2" parent="CanvasLayer" instance=ExtResource( 6 )]
 spd = 50
 
+[node name="MeteorTween" type="Tween" parent="."]
+
+[node name="MeteorContainer" type="Node2D" parent="."]
+
+[node name="MeteorTimer" type="Timer" parent="."]
+wait_time = 0.9
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+anchor_right = 1.0
+margin_top = 42.0
+margin_right = 1021.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 4 )
+text = "You Survied for"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]
 [connection signal="finished" from="LevelBackGroundMusic" to="." method="_on_LevelBackGroundMusic_finished"]
@@ -169,3 +199,4 @@ spd = 50
 [connection signal="finished" from="InstrumentSoundsContainer/Shaker" to="InstrumentSoundsContainer" method="_on_Shaker_finished"]
 [connection signal="finished" from="InstrumentSoundsContainer/Snare" to="InstrumentSoundsContainer" method="_on_Snare_finished"]
 [connection signal="timeout" from="SecondDinoDelay" to="." method="_on_SecondDinoDelay_timeout"]
+[connection signal="timeout" from="MeteorTimer" to="." method="_on_MeteorTimer_timeout"]

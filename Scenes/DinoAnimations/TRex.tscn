@@ -6,4 +6,5 @@
 scale = Vector2( 3, 3 )
 frames = ExtResource( 1 )
 animation = "Walk"
+frame = 2
 playing = true
