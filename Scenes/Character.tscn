@@ -7,7 +7,7 @@
 [ext_resource path="res://Sounds/jump.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/land.wav" type="AudioStream" id=6]
 [ext_resource path="res://Art/dust2.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/characterSprites/triceratops.tres" type="SpriteFrames" id=8]
+[ext_resource path="res://Sprites/characterSprites/stegasaurus.tres" type="SpriteFrames" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42, 41.5 )
@@ -72,6 +72,7 @@ visible = false
 scale = Vector2( 3, 3 )
 frames = ExtResource( 8 )
 animation = "Walk"
+frame = 1
 playing = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]

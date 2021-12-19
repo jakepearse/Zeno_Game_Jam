@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/L-Down.png-58a120ae762e8669507abe23ada080e2.stex"
+path="res://.import/L-down.png-311873966f3415ed1a795cacf8558f9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Test/L-Down.png"
-dest_files=[ "res://.import/L-Down.png-58a120ae762e8669507abe23ada080e2.stex" ]
+source_file="res://Sprites/Test/L-down.png"
+dest_files=[ "res://.import/L-down.png-311873966f3415ed1a795cacf8558f9f.stex" ]
 
 [params]
 

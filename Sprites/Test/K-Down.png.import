@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/K-Down.png-15a90f992b99a58b81116da4987dda51.stex"
+path="res://.import/K-down.png-90f71c78931fb8e3ad23aaeb129acc52.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Test/K-Down.png"
-dest_files=[ "res://.import/K-Down.png-15a90f992b99a58b81116da4987dda51.stex" ]
+source_file="res://Sprites/Test/K-down.png"
+dest_files=[ "res://.import/K-down.png-90f71c78931fb8e3ad23aaeb129acc52.stex" ]
 
 [params]
 
