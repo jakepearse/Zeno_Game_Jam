@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UISprites/TryAgain.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/UISprites/skullSprite.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UISprites/Extinction.png" type="Texture" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -18,32 +21,42 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -197.0
-margin_top = -121.0
+margin_top = -122.0
 margin_right = 191.0
-margin_bottom = 446.0
+margin_bottom = 445.0
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Extinction" type="Sprite" parent="ColorRect"]
+position = Vector2( 542, 218 )
+texture = ExtResource( 4 )
+
+[node name="SkullSprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 544, 369 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -10.0
-margin_top = 140.0
-margin_right = -10.0
-margin_bottom = 178.0
+margin_left = -7.0
+margin_top = 288.0
+margin_right = -7.0
+margin_bottom = 410.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CenterContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 329.0
-margin_right = 380.0
-margin_bottom = 38.0
+margin_left = 6.0
+margin_right = 703.0
+margin_bottom = 122.0
 
 [node name="Label" type="Label" parent="CenterContainer/CenterContainer"]
-margin_right = 51.0
+margin_right = 697.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "you ded"
@@ -53,9 +66,10 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="CenterContainer/CenterContainer"]
 margin_top = 18.0
-margin_right = 51.0
-margin_bottom = 38.0
-text = "Start"
+margin_right = 697.0
+margin_bottom = 122.0
+icon = ExtResource( 2 )
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
