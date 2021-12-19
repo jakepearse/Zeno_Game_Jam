@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Sounds/spawnMusic/arp.wav" type="AudioStream" id=1]
-[ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/revisedSpawnMusic/hats.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sounds/revisedSpawnMusic/piano_bass.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/Scripts/Level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Foreground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/revisedSpawnMusic/shaker.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/revisedSpawnMusic/sax.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/revisedSpawnMusic/rim.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/revisedSpawnMusic/snare_kick.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/revisedSpawnMusic/arp_bells.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/revisedSpawnMusic/guitar.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/spawnSound.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 57 )
@@ -61,8 +69,51 @@ autostart = true
 [node name="CharecterContainer" type="Node" parent="."]
 
 [node name="LevelBackGroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
 autoplay = true
+mix_target = 2
+
+[node name="Arp_Bells" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 11 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Guitar" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 12 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Hats" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 1 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Piano_Bass" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="Rim" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 9 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Sax" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 8 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Shaker" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 7 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Snare_Kick" type="AudioStreamPlayer" parent="LevelBackGroundMusic"]
+stream = ExtResource( 10 )
+volume_db = -80.0
+autoplay = true
+
+[node name="SpawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -12.0
 
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_ObstacleTimer_timeout"]
 [connection signal="timeout" from="PlayerTimer" to="." method="_on_PlayerTimer_timeout"]

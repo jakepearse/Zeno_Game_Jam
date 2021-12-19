@@ -1,14 +1,30 @@
 extends Node2D
 var difficulty = 0
+var musicIterator = 0
 
 const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
 const character_width = 96
 
+onready var arp_bells = $LevelBackGroundMusic/Arp_Bells
+onready var guitar = $LevelBackGroundMusic/Guitar
+onready var hats = $LevelBackGroundMusic/Hats
+onready var piano_bass = $LevelBackGroundMusic/Piano_Bass
+onready var rim = $LevelBackGroundMusic/Rim
+onready var sax = $LevelBackGroundMusic/Sax
+onready var shaker = $LevelBackGroundMusic/Shaker
+onready var snare_kick = $LevelBackGroundMusic/Snare_Kick
+
+onready var spawnSound = $SpawnSound
+
+onready var music_array = [arp_bells, guitar, hats, rim, sax, shaker, snare_kick]
+
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
 
 onready var KeySprite = preload("res://Scenes/KeySprite.tscn")
+
+## onready var CharacterCoda = c.get_node("CharacterCoda")
 
 ## load the textures so we can switch the keysprites in per instance
 onready var key_sprite_textures = {
@@ -22,29 +38,6 @@ onready var key_sprite_textures = {
 	KEY_L: { 'up' : load("res://Sprites/Test/L-Up.png"), 'down': load("res://Sprites/Test/L-Down.png") }
 }
 
-onready var character_audio_streams = [
-	load("res://Sounds/spawnMusic/bass.wav"),
-	load("res://Sounds/spawnMusic/bells.wav"),
-	load("res://Sounds/spawnMusic/guitar.wav"),
-	load("res://Sounds/spawnMusic/hiHat.wav"),
-	load("res://Sounds/spawnMusic/kick.wav"),
-	load("res://Sounds/spawnMusic/openHat2.wav"),
-	load("res://Sounds/spawnMusic/openHat.wav"),
-	load("res://Sounds/spawnMusic/piano.wav"),
-	load("res://Sounds/spawnMusic/rimShot.wav"),
-	load("res://Sounds/spawnMusic/sax.wav"),
-	load("res://Sounds/spawnMusic/shaker.wav"),
-	load("res://Sounds/spawnMusic/snare.wav")
-]
-
-
-onready var footstep_streams = [
-	load("res://Sounds/footStep_1.wav"),
-	load("res://Sounds/footStep_2.wav"),
-	load("res://Sounds/footStep_3.wav"),
-	load("res://Sounds/footStep_4.wav")
-]
-
 var keyMap = [KEY_A, KEY_S, KEY_D, KEY_F, KEY_H, KEY_J, KEY_K, KEY_L]
 
 var c:Node #New character spawns will be assigned to this variable.
@@ -53,7 +46,8 @@ var keySprite:Sprite#:Sprite #New Keysprite spawns will be assigned to this var.
 func _ready():
 	randomize() #Set a random seed for RNG
 	keyMap.shuffle() #Randomize the order that the keys will be introduced in
-	character_audio_streams.shuffle()
+	##character_audio_streams.shuffle()
+	## CharacterCoda.stream = character_audio_streams.pop_front() ## set the background sound
 
 func _on_ObstacleTimer_timeout():
 #	return # begone foul obstacles
@@ -76,14 +70,14 @@ func _on_PlayerTimer_timeout():
 
 
 func spawn_character(pos):
+	spawnSound.play()
 	c = Character.instance()
 	c.floorNode = $Floor
 	c.position = pos
 	c.jumpKey = keyMap.pop_front()
-	var CharacterCoda = c.get_node("CharacterCoda")
-	var Footsteps = c.get_node("Footsteps")
-	CharacterCoda.stream = character_audio_streams.pop_front() ## set the background sound
-	Footsteps.stream = footstep_streams[randi() % footstep_streams.size()] ## set the footstep sound
+	if music_array[musicIterator].get_volume_db() < (-3):
+		music_array[musicIterator].set_volume_db(-3)
+		musicIterator += 1
 	$CharecterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
 
 func assign_sprite(key):

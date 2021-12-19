@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hats.wav-c46b0efdd54f812596a0f49573f0cb99.sample"
+
+[deps]
+
+source_file="res://Sounds/revisedSpawnMusic/hats.wav"
+dest_files=[ "res://.import/hats.wav-c46b0efdd54f812596a0f49573f0cb99.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/piano_bass.wav-78eeb735d657a6f586c51b3624a51e54.sample"
+
+[deps]
+
+source_file="res://Sounds/revisedSpawnMusic/piano_bass.wav"
+dest_files=[ "res://.import/piano_bass.wav-78eeb735d657a6f586c51b3624a51e54.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

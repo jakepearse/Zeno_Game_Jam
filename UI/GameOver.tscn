@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/deathScreenSound.wav" type="AudioStream" id=2]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -59,5 +60,12 @@ text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DeathMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.0
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="CenterContainer/CenterContainer/Button" to="." method="_on_Button_pressed"]
