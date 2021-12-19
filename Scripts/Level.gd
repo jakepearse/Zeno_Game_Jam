@@ -60,7 +60,15 @@ func _on_PlayerTimer_timeout():
 	match difficulty:
 		0:
 			$ObstacleTimer.start() #Begin spawning obstacles
+			#FIXME: Add statement, should spawn only small obstacles
 			continue #Also spawn a dino
+		1:
+			$ObstacleTimer.stop()
+			$SecondDinoDelay.start()
+		2:
+			$ObstacleTimer.start()
+		3:
+			pass #FIXME: Begin randomization of obstacle size
 		_:
 			charCount = $CharecterContainer.get_child_count()
 			if charCount >= 8: continue # only 8 allowed
@@ -104,3 +112,11 @@ func assign_sprite(key):
 
 func _on_LevelBackGroundMusic_finished():
 	$LevelBackGroundMusic.play()
+
+
+func _on_SecondDinoDelay_timeout():
+	charCount = $CharecterContainer.get_child_count()
+	var x = character_width + charCount * character_width ## calculate where to place the next charecter
+	assign_sprite(keyMap[0]) #Create and position keysprite
+	keySprite.position = Vector2(x, spriteHeight)
+	spawn_character(Vector2(x, charHeight)) #Create and position character

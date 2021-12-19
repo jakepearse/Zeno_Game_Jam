@@ -135,6 +135,13 @@ stream = ExtResource( 8 )
 volume_db = -80.0
 autoplay = true
 
+[node name="SecondDinoDelay" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+__meta__ = {
+"_editor_description_": "This is the delay that the second dino spawns after."
+}
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource( 19 )]
@@ -161,3 +168,4 @@ spd = 50
 [connection signal="finished" from="InstrumentSoundsContainer/Sax" to="InstrumentSoundsContainer" method="_on_Sax_finished"]
 [connection signal="finished" from="InstrumentSoundsContainer/Shaker" to="InstrumentSoundsContainer" method="_on_Shaker_finished"]
 [connection signal="finished" from="InstrumentSoundsContainer/Snare" to="InstrumentSoundsContainer" method="_on_Snare_finished"]
+[connection signal="timeout" from="SecondDinoDelay" to="." method="_on_SecondDinoDelay_timeout"]
