@@ -45,8 +45,10 @@ var c:Node #New character spawns will be assigned to this variable.
 var keySprite:Sprite#:Sprite #New Keysprite spawns will be assigned to this var.
 	
 func _ready():
+	$CanvasLayer/Transition.In (1.0)
 	randomize() #Set a random seed for RNG
 	keyMap.shuffle() #Randomize the order that the keys will be introduced in
+	
 
 func _on_ObstacleTimer_timeout():
 #	return # begone foul obstacles
