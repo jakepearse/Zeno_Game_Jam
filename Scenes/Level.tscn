@@ -60,10 +60,9 @@ margin_left = -188.0
 margin_top = 450.0
 margin_right = 1265.0
 margin_bottom = 531.0
-rect_scale = Vector2( 3, 3 )
 
 [node name="ObstacleTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [node name="PlayerTimer" type="Timer" parent="."]
 wait_time = 6.0
