@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/backgroundSprites/cloud1.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/backgroundSprites/skybox.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/backgroundSprites/skyboxPixel.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/backgroundSprites/cloud2.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/backgroundSprites/cloud3.png" type="Texture" id=5]
 
