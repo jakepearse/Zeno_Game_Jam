@@ -21,10 +21,11 @@ shader_param/speed = 0.4
 
 [node name="ScrollingTexture" type="TextureRect"]
 material = SubResource( 3 )
-margin_left = -168.0
-margin_top = 519.0
-margin_right = 1285.0
-margin_bottom = 599.0
+margin_left = -212.0
+margin_top = 398.0
+margin_right = 1242.0
+margin_bottom = 479.0
+rect_scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 stretch_mode = 2
 __meta__ = {
