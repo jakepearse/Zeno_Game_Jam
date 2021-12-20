@@ -5,7 +5,7 @@
 [ext_resource path="res://Art/dust.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 35.0
+radius = 28.0
 height = 24.0
 
 [sub_resource type="CanvasItemMaterial" id=2]
@@ -54,6 +54,5 @@ material = SubResource( 2 )
 z_index = -1
 preprocess = 1.5
 speed_scale = 0.3
-local_coords = false
 process_material = SubResource( 5 )
 texture = ExtResource( 3 )

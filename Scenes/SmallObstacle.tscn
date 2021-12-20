@@ -54,6 +54,5 @@ material = SubResource( 2 )
 z_index = -1
 preprocess = 1.5
 speed_scale = 0.3
-local_coords = false
 process_material = SubResource( 5 )
 texture = ExtResource( 3 )
