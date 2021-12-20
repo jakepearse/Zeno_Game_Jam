@@ -8,8 +8,11 @@ const character_width = 96
 
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
+onready var Obstacle2 = preload("res://Scenes/Obstacle2.tscn")
 onready var Meteor = preload("res://Scenes/MeteorTrail.tscn")
 onready var KeySprite = preload("res://Scenes/KeySprite.tscn")
+
+var obstAssort = false #whether obstacle size is randomized.
 var charCount = 0
 var play_time:float = 0.0
 ## load the textures so we can switch the keysprites in per instance
@@ -58,9 +61,15 @@ func _on_ObstacleTimer_timeout():
 #	return # begone foul obstacles
 	spawn_meteor()
 	yield(get_tree().create_timer(1.5), "timeout") ## it's either this or create another timer...
-	var o = Obstacle.instance()
-	o.position = Vector2(1020,450) #? idk
-	add_child(o)
+	if obstAssort && (randi() % 2) == 1:
+		var o = Obstacle.instance()
+		o.position = Vector2(1020,450) #? idk
+		add_child(o)
+	else:
+		var o = Obstacle2.instance()
+		o.position = Vector2(1020,450) #? idk
+		add_child(o)
+	randomize()
 
 func spawn_meteor():
 	var meteor = Meteor.instance()
@@ -101,7 +110,7 @@ func _on_PlayerTimer_timeout():
 			$ObstacleTimer.start()
 
 		3:
-			pass #FIXME: Begin randomization of obstacle size
+			obstAssort = true
 		_:
 			charCount = $CharecterContainer.get_child_count()
 			if charCount >= 8: continue # only 8 allowed
