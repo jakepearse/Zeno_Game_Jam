@@ -5,6 +5,7 @@ const charHeight = 300 #Starting y-coord of Characters
 const spriteHeight = 560 #y-coord of key sprites
 const character_width = 96
 
+onready var SmallBolder = preload("res://Scenes/SmallObstacle.tscn")
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
 onready var Meteor = preload("res://Scenes/MeteorTrail.tscn")
@@ -55,9 +56,12 @@ func _process(delta):
 
 func _on_ObstacleTimer_timeout():
 #	return # begone foul obstacles
+	var o
 	spawn_meteor()
 	yield(get_tree().create_timer(1.5), "timeout") ## it's either this or create another timer...
-	var o = Obstacle.instance()
+	if (randi()%100<50):
+		o = Obstacle.instance()
+	else: o = SmallBolder.instance()
 	o.position = Vector2(1020,450) #? idk
 	add_child(o)
 
