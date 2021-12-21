@@ -1,27 +1,30 @@
 extends Node2D
 var difficulty = 0
 
-const charHeight = 300 #Starting y-coord of Characters
-const spriteHeight = 560 #y-coord of key sprites
+const key_sprite_height = 560 #y-coord of key sprites
+const char_height = 300 #Starting y-coord of Characters
 const character_width = 96
+
 
 onready var SmallBolder = preload("res://Scenes/SmallObstacle.tscn")
 onready var Character = preload("res://Scenes/Character.tscn")
 onready var Obstacle = preload("res://Scenes/Obstacle.tscn")
 onready var Meteor = preload("res://Scenes/MeteorTrail.tscn")
 onready var KeySprite = preload("res://Scenes/KeySprite.tscn")
-var charCount = 0
+#var charCount = 0
 var play_time:float = 0.0
+var random_sized_obstacles: bool = false
+onready var obstacles = [SmallBolder.instance(),SmallBolder.instance(),SmallBolder.instance()];
 ## load the textures so we can switch the keysprites in per instance
 onready var key_sprite_textures = {
-	KEY_A: { 'up': load("res://Sprites/Test/A-Up.png"), 'down': load("res://Sprites/Test/A-Down.png") },
-	KEY_S: { 'up' : load("res://Sprites/Test/S-Up.png"), 'down': load("res://Sprites/Test/S-Down.png") },
-	KEY_D: { 'up' : load("res://Sprites/Test/D-Up.png"), 'down': load("res://Sprites/Test/D-Down.png") },
-	KEY_F: { 'up' : load("res://Sprites/Test/F-Up.png"), 'down': load("res://Sprites/Test/F-Down.png") },
-	KEY_H: { 'up' : load("res://Sprites/Test/H-Up.png"), 'down': load("res://Sprites/Test/H-Down.png") },
-	KEY_J: { 'up' : load("res://Sprites/Test/J-Up.png"), 'down': load("res://Sprites/Test/J-Down.png") },
-	KEY_K: { 'up' : load("res://Sprites/Test/K-Up.png"), 'down': load("res://Sprites/Test/K-Down.png") },
-	KEY_L: { 'up' : load("res://Sprites/Test/L-Up.png"), 'down': load("res://Sprites/Test/L-Down.png") }
+	KEY_A: { 'up': preload("res://Sprites/Test/A-Up.png"), 'down': preload("res://Sprites/Test/A-Down.png") },
+	KEY_S: { 'up' : preload("res://Sprites/Test/S-Up.png"), 'down': preload("res://Sprites/Test/S-Down.png") },
+	KEY_D: { 'up' : preload("res://Sprites/Test/D-Up.png"), 'down': preload("res://Sprites/Test/D-Down.png") },
+	KEY_F: { 'up' : preload("res://Sprites/Test/F-Up.png"), 'down': preload("res://Sprites/Test/F-Down.png") },
+	KEY_H: { 'up' : preload("res://Sprites/Test/H-Up.png"), 'down': preload("res://Sprites/Test/H-Down.png") },
+	KEY_J: { 'up' : preload("res://Sprites/Test/J-Up.png"), 'down': preload("res://Sprites/Test/J-Down.png") },
+	KEY_K: { 'up' : preload("res://Sprites/Test/K-Up.png"), 'down': preload("res://Sprites/Test/K-Down.png") },
+	KEY_L: { 'up' : preload("res://Sprites/Test/L-Up.png"), 'down': preload("res://Sprites/Test/L-Down.png") }
 }
 
 onready var footstep_streams = [
@@ -56,14 +59,15 @@ func _process(delta):
 
 func _on_ObstacleTimer_timeout():
 #	return # begone foul obstacles
-	var o
+	if obstacles.size() == 0:
+		return
+	print(obstacles)
+	var o = obstacles.pop_front()
 	spawn_meteor()
-	yield(get_tree().create_timer(1.5), "timeout") ## it's either this or create another timer...
-	if (randi()%100<50):
-		o = Obstacle.instance()
-	else: o = SmallBolder.instance()
+	yield(get_tree().create_timer(1.5), "timeout") ## wait for the meteor animation
 	o.position = Vector2(1020,450) #? idk
 	add_child(o)
+
 
 func spawn_meteor():
 	var meteor = Meteor.instance()
@@ -89,73 +93,75 @@ func spawn_meteor():
 	)
 	$MeteorTween.start() 
 
-func _on_PlayerTimer_timeout():
-	match difficulty:
-		0:
-			$ObstacleTimer.start() #Begin spawning obstacles
-
-			#FIXME: Add statement, should spawn only small obstacles
-			continue #Also spawn a dino
-		1:
-			$ObstacleTimer.stop()
-
-			$SecondDinoDelay.start()
-		2:
-			$ObstacleTimer.start()
-
+func _on_DinoTimer_timeout():
+	# what we want is some amount of meteors then a pause to spawn a new guy then fire off
+	#	some meteors again
+	if obstacles.size() > 0 :
+		return
+	var count = $CharacterContainer.get_child_count()
+	if count >= 8:
+		return # only 8 allowed
+	match count:
+		1: 	obstacles.append(Obstacle.instance())
+		2:	
+			
+			$DinoTimer.wait_time = 6
+			$ObstacleTimer.wait_time = 4
 		3:
-			pass #FIXME: Begin randomization of obstacle size
+			$DinoTimer.wait_time = 5
+			obstacles.append(Obstacle.instance())
+			obstacles.append(Obstacle.instance())
+			
+		4:
+			random_sized_obstacles = true
 		_:
-			charCount = $CharecterContainer.get_child_count()
-			if charCount >= 8: continue # only 8 allowed
-			var x = character_width + charCount * character_width ## calculate where to place the next charecter
-			assign_sprite(keyMap[0]) #Create and position keysprite
-			keySprite.position = Vector2(x, spriteHeight)
-			spawn_character(Vector2(x, charHeight)) #Create and position character
-	difficulty = difficulty + 1 #Difficulty has increased.
-
+			pass
+	var o
+	for i in randi() % count + count/2:
+		if (random_sized_obstacles):
+			if (randi() % 100 < 50):
+				o = Obstacle
+			else: 
+				o = SmallBolder
+		else: o = SmallBolder
+		obstacles.append(o.instance())
+	var x = character_width + count * character_width ## calculate where to place the next charecter
+	spawn_keysprite(keyMap[0]) #Create and position keysprite
+	keySprite.position = Vector2(x, key_sprite_height)
+	print('spawning in dinotimeout')
+	spawn_character(Vector2(x, char_height)) #Create and position character
 
 func spawn_character(pos):
 	c = Character.instance()
 	c.floorNode = $Floor
 	c.position = pos
 	c.jumpKey = keyMap.pop_front()
-
-	var idx = charCount % dino_sprites.size()
-	c.add_child(dino_sprites[charCount % dino_sprites.size()].instance())
+	var char_count = $CharacterContainer.get_child_count()
+	var animated_sprite = dino_sprites[char_count % dino_sprites.size()].instance()
+	var sprite_node = animated_sprite.get_node("AnimatedSprite")
+	sprite_node = animated_sprite
+	c.add_child(animated_sprite)
 	var Footsteps = c.get_node("Footsteps")
 	var random_instrument:AudioStreamPlayer = $InstrumentSoundsContainer.get_children()[randi() % $InstrumentSoundsContainer.get_child_count()-1]
 	if random_instrument.get_volume_db() == -80: random_instrument.set_volume_db(0) ## set the background sound
 	Footsteps.stream = footstep_streams[randi() % footstep_streams.size()] ## set the footstep sound
-	$CharecterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
-	
-	#	You cant just switch out the frames, sadly you have to build a whole mess of stuff 1st...
-	# instead make a Scene & instance that with all that animation data in there
-	#FIXME: access the Frames property of c's AnimatedSprite node
-	#c.get_node("AnimatedSprite").frames = dino_sprites[charCount % dino_sprites.size()]
+	$CharacterContainer.add_child(c) ## if we keep them all together in a node its easy to count them
 
-
-func assign_sprite(key):
+func spawn_keysprite(key):
 	var k = KeySprite.instance()
 	keySprite = k.get_node("Sprite")
 	keySprite.key = key
 	keySprite.up_sprite = key_sprite_textures[key].up
 	keySprite.down_sprite = key_sprite_textures[key].down
-	## the keySprite is getting positioned in the parent function, on_player_timeout
+	## the keySprite is getting positioned in the parent function
 	add_child(k)
-
 
 func _on_LevelBackGroundMusic_finished():
 	$LevelBackGroundMusic.play()
 
-
-func _on_SecondDinoDelay_timeout():
-	charCount = $CharecterContainer.get_child_count()
-	var x = character_width + charCount * character_width ## calculate where to place the next charecter
-	assign_sprite(keyMap[0]) #Create and position keysprite
-	keySprite.position = Vector2(x, spriteHeight)
-	spawn_character(Vector2(x, charHeight)) #Create and position character
-
-
-#func _on_MeteorTimer_timeout():
-#	spawn_meteor()
+func _on_IntroTimer_timeout():
+	spawn_keysprite(keyMap[0]) #Create and position keysprite
+	keySprite.position = Vector2(character_width, key_sprite_height)
+	spawn_character(Vector2(character_width, char_height)) #Create and position character
+	$ObstacleTimer.start()
+	$DinoTimer.start()
