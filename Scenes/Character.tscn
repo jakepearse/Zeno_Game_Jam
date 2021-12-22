@@ -54,6 +54,7 @@ shape = SubResource( 1 )
 visible = false
 position = Vector2( 0, 1.90735e-06 )
 scale = Vector2( 3, 3 )
+z_index = -2
 texture = ExtResource( 1 )
 hframes = 13
 frame = 3
